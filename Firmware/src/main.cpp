@@ -1,13 +1,15 @@
 #include <Arduino.h>
 
+#include "LowPower.h"
+
 #define PIN_BUZZER  6
 #define PIN_LED_RED 7
 #define PIN_LED_GRN 8
 
-#define TIME_GO_UP     4000
-#define TIME_WAIT_UP   2250
-#define TIME_GO_DOWN   4000
-#define TIME_WAIT_DOWN 2250
+#define TIME_GO_UP     SLEEP_4S // 4000
+#define TIME_WAIT_UP   SLEEP_2S // 2250
+#define TIME_GO_DOWN   SLEEP_4S // 4000
+#define TIME_WAIT_DOWN SLEEP_2S // 2250
 
 #define NUM_REPETITIONS 10
 
@@ -50,28 +52,27 @@ void sigFinished() {
   blip(PIN_LED_GRN, 1, 500);
 }
 
+void sleep(int duration) {
+  LowPower.powerDown(duration, ADC_OFF, BOD_OFF);
+}
+
 void setup() {
   pinMode(PIN_BUZZER,OUTPUT);
   pinMode(PIN_LED_RED,OUTPUT);
   pinMode(PIN_LED_GRN,OUTPUT);
 
   for (size_t i = 0; i < 5; i++) {
-    sigCountDown();
-    delay(1000);
+    sigCountDown(); sleep(SLEEP_1S);
   }
 
   for (int i = 0; i < NUM_REPETITIONS; i++) {
-    sigGoUp();
-    delay(TIME_GO_UP);
-    sigWaitUp();
-    delay(TIME_WAIT_UP);
-    sigGoDown();
-    delay(TIME_GO_DOWN);
-    sigWaitDown();
-    delay(TIME_WAIT_DOWN);
+    sigGoUp();      sleep(TIME_GO_UP);
+    sigWaitUp();    sleep(TIME_WAIT_UP);
+    sigGoDown();    sleep(TIME_GO_DOWN);
+    sigWaitDown();  sleep(TIME_WAIT_DOWN);
   }
 
-  sigFinished();
+  sigFinished();    sleep(SLEEP_FOREVER);
 }
 
 void loop() {
