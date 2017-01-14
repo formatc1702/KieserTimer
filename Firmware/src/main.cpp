@@ -11,11 +11,23 @@
 #define TIME_GO_DOWN   SLEEP_4S // 4000
 #define TIME_WAIT_DOWN SLEEP_2S // 2250
 
+#define FREQ_COUTDOWN  440
+#define FREQ_UP        880
+#define FREQ_DOWN      660
+#define FREQ_FINISHED 1100
+
 #define NUM_REPETITIONS 10
 
 #define DELAY_BLIP 50
 
-void blip(int pin, int times, int duration) {
+void tone_delay(int pin, unsigned int freq, unsigned long duration) {
+  tone(pin, freq, duration);
+  delay(duration);
+}
+
+void blip(int pin, int times, int duration, unsigned int freq) {
+  if (freq > 0)
+    tone(PIN_BUZZER, freq, duration);
   for (int i = 0; i < times; i++) {
     digitalWrite(pin,HIGH);
     delay(duration);
@@ -24,32 +36,32 @@ void blip(int pin, int times, int duration) {
   }
 }
 
-void blip(int pin, int times) {
-  blip(pin, times, DELAY_BLIP);
+void blip(int pin, int times, unsigned int freq) {
+  blip(pin, times, DELAY_BLIP, freq);
 }
 
 void sigCountDown() {
-  blip(PIN_LED_RED, 1);
+  blip(PIN_LED_RED, 1, FREQ_COUTDOWN);
 }
 
 void sigGoUp() {
-  blip(PIN_LED_GRN, 1);
+  blip(PIN_LED_GRN, 1, FREQ_UP);
 }
 
 void sigGoDown() {
-  blip(PIN_LED_RED, 1);
+  blip(PIN_LED_RED, 1, FREQ_DOWN);
 }
 
 void sigWaitUp() {
-  blip(PIN_LED_GRN, 2);
+  blip(PIN_LED_GRN, 2, FREQ_UP);
 }
 
 void sigWaitDown() {
-  blip(PIN_LED_RED, 2);
+  blip(PIN_LED_RED, 2, FREQ_DOWN);
 }
 
 void sigFinished() {
-  blip(PIN_LED_GRN, 1, 500);
+  blip(PIN_LED_GRN, 1, 500, FREQ_FINISHED);
 }
 
 void sleep(int duration) {
