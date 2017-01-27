@@ -64,7 +64,7 @@ void sigFinished() {
   blip(PIN_LED_RIGHT, 1, 500, FREQ_FINISHED);
 }
 
-void sleep(int duration) {
+void sleep(period_t duration) {
   LowPower.powerDown(duration, ADC_OFF, BOD_OFF);
 }
 
