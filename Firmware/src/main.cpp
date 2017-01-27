@@ -2,9 +2,9 @@
 
 #include "LowPower.h"
 
-#define PIN_BUZZER  6
-#define PIN_LED_RED 7
-#define PIN_LED_GRN 8
+#define PIN_LED_GRN 2 // PD2, pin  4
+#define PIN_BUZZER  3 // PD3, pin  5
+#define PIN_LED_RED 5 // PD5, pin 11
 
 #define TIME_GO_UP     SLEEP_4S // 4000
 #define TIME_WAIT_UP   SLEEP_2S // 2250
