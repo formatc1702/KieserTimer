@@ -73,6 +73,8 @@ void setup() {
   pinMode(PIN_LED_RED,OUTPUT);
   pinMode(PIN_LED_GRN,OUTPUT);
 
+  sleep(SLEEP_2S);
+
   for (size_t i = 0; i < 5; i++) {
     sigCountDown(); sleep(SLEEP_1S);
   }
