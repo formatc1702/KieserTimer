@@ -2,9 +2,9 @@
 
 #include "LowPower.h"
 
-#define PIN_LED_GRN 2 // PD2, pin  4
-#define PIN_BUZZER  3 // PD3, pin  5
-#define PIN_LED_RED 5 // PD5, pin 11
+#define PIN_LED_LEFT  2 // PD2, pin  4
+#define PIN_BUZZER    3 // PD3, pin  5
+#define PIN_LED_RIGHT 5 // PD5, pin 11
 
 #define TIME_GO_UP     SLEEP_4S // 4000
 #define TIME_WAIT_UP   SLEEP_2S // 2250
@@ -41,27 +41,27 @@ void blip(int pin, int times, unsigned int freq) {
 }
 
 void sigCountDown() {
-  blip(PIN_LED_RED, 1, FREQ_COUTDOWN);
+  blip(PIN_LED_LEFT, 1, FREQ_COUTDOWN);
 }
 
 void sigGoUp() {
-  blip(PIN_LED_GRN, 1, FREQ_UP);
+  blip(PIN_LED_RIGHT, 1, FREQ_UP);
 }
 
 void sigGoDown() {
-  blip(PIN_LED_RED, 1, FREQ_DOWN);
+  blip(PIN_LED_LEFT, 1, FREQ_DOWN);
 }
 
 void sigWaitUp() {
-  blip(PIN_LED_GRN, 2, FREQ_UP);
+  blip(PIN_LED_RIGHT, 2, FREQ_UP);
 }
 
 void sigWaitDown() {
-  blip(PIN_LED_RED, 2, FREQ_DOWN);
+  blip(PIN_LED_LEFT, 2, FREQ_DOWN);
 }
 
 void sigFinished() {
-  blip(PIN_LED_GRN, 1, 500, FREQ_FINISHED);
+  blip(PIN_LED_RIGHT, 1, 500, FREQ_FINISHED);
 }
 
 void sleep(int duration) {
@@ -70,8 +70,8 @@ void sleep(int duration) {
 
 void setup() {
   pinMode(PIN_BUZZER,OUTPUT);
-  pinMode(PIN_LED_RED,OUTPUT);
-  pinMode(PIN_LED_GRN,OUTPUT);
+  pinMode(PIN_LED_LEFT,OUTPUT);
+  pinMode(PIN_LED_RIGHT,OUTPUT);
 
   sleep(SLEEP_2S);
 
