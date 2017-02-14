@@ -11,10 +11,22 @@
 #define TIME_GO_DOWN   SLEEP_4S // 4000
 #define TIME_WAIT_DOWN SLEEP_2S // 2250
 
-#define FREQ_COUTDOWN  440
-#define FREQ_UP        880
-#define FREQ_DOWN      660
-#define FREQ_FINISHED 1100
+#define C6 1046
+#define E6 1318
+#define G6 1568
+#define A6 1760
+#define B6 1975
+#define C7 2093
+#define D7 2349
+#define E7 2637
+#define F7 2794
+#define G7 3136
+#define C8 4186
+
+#define FREQ_COUTDOWN  E6
+#define FREQ_DOWN      B6
+#define FREQ_UP        C7
+#define FREQ_FINISHED  D7
 
 #define NUM_REPETITIONS 10
 
@@ -45,19 +57,21 @@ void sigCountDown() {
 }
 
 void sigGoUp() {
+  blip(PIN_LED_RIGHT, 1, FREQ_DOWN);
   blip(PIN_LED_RIGHT, 1, FREQ_UP);
 }
 
 void sigGoDown() {
+  blip(PIN_LED_LEFT, 1, FREQ_UP);
   blip(PIN_LED_LEFT, 1, FREQ_DOWN);
 }
 
 void sigWaitUp() {
-  blip(PIN_LED_RIGHT, 2, FREQ_UP);
+  blip(PIN_LED_RIGHT, 1, FREQ_UP);
 }
 
 void sigWaitDown() {
-  blip(PIN_LED_LEFT, 2, FREQ_DOWN);
+  blip(PIN_LED_LEFT, 1, FREQ_DOWN);
 }
 
 void sigFinished() {
