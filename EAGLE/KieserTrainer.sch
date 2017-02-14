@@ -10057,8 +10057,13 @@ Source: www.kingbright.com</description>
 <sheet>
 <plain>
 <text x="104.14" y="53.34" size="1.778" layer="91">ToDo: connect pushbutton</text>
-<text x="139.7" y="71.12" size="1.778" layer="91">Mystery diodes
-make ~5V out of 6V</text>
+<text x="152.4" y="66.04" size="1.778" layer="91" align="bottom-right">Mystery diodes
+make ~5V out of 6V
+bypassed because
+it works better without
+and (theoretically) stays
+below the ATmega's
+absolute max of 6V</text>
 <text x="157.48" y="40.64" size="1.778" layer="91" rot="R90">2x CR2016 3V = 6V</text>
 </plain>
 <instances>
@@ -10078,7 +10083,7 @@ make ~5V out of 6V</text>
 <instance part="GND6" gate="1" x="137.16" y="22.86" rot="R90"/>
 <instance part="S1" gate="1" x="162.56" y="88.9"/>
 <instance part="P+3" gate="VCC" x="167.64" y="99.06"/>
-<instance part="D1" gate="G$1" x="165.1" y="66.04" rot="R90"/>
+<instance part="D1" gate="G$1" x="165.1" y="68.58" rot="R90"/>
 <instance part="D2" gate="G$1" x="165.1" y="76.2" rot="R90"/>
 <instance part="C1" gate="G$1" x="10.16" y="68.58"/>
 <instance part="P+4" gate="VCC" x="10.16" y="73.66"/>
@@ -10204,7 +10209,7 @@ make ~5V out of 6V</text>
 <segment>
 <pinref part="D1" gate="G$1" pin="C"/>
 <pinref part="D2" gate="G$1" pin="A"/>
-<wire x1="165.1" y1="73.66" x2="165.1" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="73.66" x2="165.1" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -10241,14 +10246,17 @@ make ~5V out of 6V</text>
 <segment>
 <pinref part="JP1" gate="G$1" pin="1"/>
 <pinref part="D1" gate="G$1" pin="A"/>
+<wire x1="165.1" y1="66.04" x2="165.1" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="165.1" y1="63.5" x2="165.1" y2="58.42" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$7" class="0">
-<segment>
+<wire x1="165.1" y1="63.5" x2="170.18" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="63.5" x2="170.18" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="D2" gate="G$1" pin="C"/>
 <pinref part="S1" gate="1" pin="P"/>
-<wire x1="165.1" y1="78.74" x2="165.1" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="78.74" x2="165.1" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="81.28" x2="165.1" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="81.28" x2="165.1" y2="81.28" width="0.1524" layer="91"/>
+<junction x="165.1" y="63.5"/>
+<junction x="165.1" y="81.28"/>
 </segment>
 </net>
 </nets>
