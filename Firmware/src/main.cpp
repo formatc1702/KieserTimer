@@ -56,6 +56,10 @@ void sigCountDown() {
   blip(PIN_LED_LEFT, 1, FREQ_COUTDOWN);
 }
 
+void sigCountDownSilent() {
+  blip(PIN_LED_LEFT, 1, 0);
+}
+
 void sigGoUp() {
   blip(PIN_LED_RIGHT, 1, FREQ_DOWN);
   blip(PIN_LED_RIGHT, 1, FREQ_UP);
@@ -90,7 +94,11 @@ void setup() {
   sleep(SLEEP_2S);
 
   for (size_t i = 0; i < 5; i++) {
-    sigCountDown(); sleep(SLEEP_1S);
+    if (i < 3)
+      sigCountDownSilent();
+    else
+      sigCountDown();
+   sleep(SLEEP_1S);
   }
 
   for (int i = 0; i < NUM_REPETITIONS; i++) {
