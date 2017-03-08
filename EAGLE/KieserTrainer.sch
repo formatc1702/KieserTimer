@@ -10052,11 +10052,11 @@ Source: www.kingbright.com</description>
 <part name="LED1" library="led" deviceset="LED" device="3MM"/>
 <part name="LED2" library="led" deviceset="LED" device="3MM"/>
 <part name="S2" library="switch-omron" deviceset="10-XX" device=""/>
+<part name="GND8" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
-<text x="104.14" y="53.34" size="1.778" layer="91">ToDo: connect pushbutton</text>
 <text x="152.4" y="66.04" size="1.778" layer="91" align="bottom-right">Mystery diodes
 make ~5V out of 6V
 bypassed because
@@ -10090,7 +10090,8 @@ absolute max of 6V</text>
 <instance part="GND7" gate="1" x="10.16" y="60.96"/>
 <instance part="LED1" gate="G$1" x="76.2" y="73.66" rot="R90"/>
 <instance part="LED2" gate="G$1" x="76.2" y="60.96" rot="R90"/>
-<instance part="S2" gate="1" x="111.76" y="43.18" rot="R270"/>
+<instance part="S2" gate="1" x="81.28" y="91.44" rot="MR270"/>
+<instance part="GND8" gate="1" x="91.44" y="86.36"/>
 </instances>
 <busses>
 </busses>
@@ -10131,6 +10132,11 @@ absolute max of 6V</text>
 <segment>
 <pinref part="GND2" gate="1" pin="GND"/>
 <pinref part="R2" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<pinref part="GND8" gate="1" pin="GND"/>
+<pinref part="S2" gate="1" pin="P1"/>
+<wire x1="86.36" y1="88.9" x2="91.44" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -10212,15 +10218,6 @@ absolute max of 6V</text>
 <wire x1="165.1" y1="73.66" x2="165.1" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$3" class="0">
-<segment>
-<wire x1="73.66" y1="73.66" x2="71.12" y2="73.66" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="73.66" x2="71.12" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="U1" gate="A" pin="PD2"/>
-<wire x1="71.12" y1="71.12" x2="68.58" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="LED1" gate="G$1" pin="A"/>
-</segment>
-</net>
 <net name="N$4" class="0">
 <segment>
 <pinref part="U1" gate="A" pin="PD5"/>
@@ -10257,6 +10254,22 @@ absolute max of 6V</text>
 <wire x1="170.18" y1="81.28" x2="165.1" y2="81.28" width="0.1524" layer="91"/>
 <junction x="165.1" y="63.5"/>
 <junction x="165.1" y="81.28"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="LED1" gate="G$1" pin="A"/>
+<pinref part="U1" gate="A" pin="PD1"/>
+<wire x1="73.66" y1="73.66" x2="68.58" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="U1" gate="A" pin="PD2"/>
+<wire x1="68.58" y1="71.12" x2="71.12" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="71.12" x2="71.12" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="S2" gate="1" pin="S1"/>
+<wire x1="76.2" y1="88.9" x2="71.12" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
